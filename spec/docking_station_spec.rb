@@ -18,9 +18,9 @@ describe  DockingStation do
   end
 
   describe '#dock' do
-    it 'raises an error if there\'s more than one bike present' do
-      subject.dock(Bike.new)
-      expect{subject.dock Bike.new}.to raise_error("Dock full")
+    it 'raises an error if there\'s more than twenty bikes present' do
+      20.times {subject.dock(Bike.new)}
+      expect {subject.dock Bike.new}.to raise_error("Dock full")
     end
   end
 
@@ -28,16 +28,7 @@ describe  DockingStation do
 
   it { is_expected.to respond_to(:bike) }
 
-  it 'docks something' do
-    bike = Bike.new
-    expect(subject.dock(bike)).to eq bike
-  end
 
-  it 'return docked bikes' do
-    bike = Bike.new
-    subject.dock(bike)
-    expect(subject.bike).to eq bike
-  end
 
 
 end
