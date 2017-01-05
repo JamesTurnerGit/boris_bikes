@@ -27,6 +27,12 @@ class DockingStation
     @broken_bikes << @bikes.pop
   end
 
+  def pickup_bikes
+    bikes_transit = @broken_bikes
+    @broken_bikes = []
+    bikes_transit
+  end
+
   private
   def total_bikes
     bikes.count + broken_bikes.count
@@ -39,4 +45,5 @@ class DockingStation
   def empty?
     fail "No bikes present" if bikes.empty?
   end
+
 end
