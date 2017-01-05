@@ -1,6 +1,7 @@
 require 'DockingStation'
 
 describe  DockingStation do
+  let(:bike) {double(:bike, working?: true, Class: Bike)}
   it { is_expected.to respond_to :release_bike}
   it { is_expected.to respond_to :bikes}
   it { is_expected.to respond_to(:dock).with(1).argument}
@@ -10,16 +11,12 @@ describe  DockingStation do
   #  before(:each) do
     #  subject.dock(double(:bike))
   #  end
-  let(:bike) { double :bike}
     it 'releases a bike' do
       subject.dock(bike)
-      allow(bike).to receive(:Class).and_return(Bike)
       expect(subject.release_bike.Class).to eq Bike
     end
 
     it 'releases a working bike' do
-      #allow(bike).to receive(:working?).and_return(true)
-      bike = double(bike, :working? => true)
       subject.dock(bike)
       released_bike = subject.release_bike
       expect(released_bike).to be_working
@@ -35,13 +32,13 @@ describe  DockingStation do
   describe '#dock' do
     describe 'raises an error if there\'s more than twenty bikes present'do
       it 'raises an error if there is too many bikes'do
-        subject.capacity.times{subject.dock double(:bike)}
-        expect{subject.dock double(:bike)}.to raise_error("Dock full")
+        subject.capacity.times{subject.dock bike}
+        expect{subject.dock double bike}.to raise_error("Dock full")
       end
       it 'and counts broken_bikes in capacity' do
-        subject.capacity.times{subject.dock double(:bike)}
+        subject.capacity.times{subject.dock bike}
         subject.report_broken
-        expect{subject.dock double(:bike)}.to raise_error("Dock full")
+        expect{subject.dock bike}.to raise_error("Dock full")
       end
     end
   end
