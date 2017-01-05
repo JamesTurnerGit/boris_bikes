@@ -3,7 +3,7 @@ require 'DockingStation'
 describe  DockingStation do
   let(:bike) {double(:bike, working?: true, Class: Bike)}
   it { is_expected.to respond_to :release_bike}
-  it { is_expected.to respond_to :bikes}
+  it { is_expected.to respond_to :stored_bikes}
   it { is_expected.to respond_to(:dock).with(1).argument}
   it { is_expected.to respond_to :report_broken}
 

@@ -1,10 +1,14 @@
 class Garage
-
-  attr_reader :bike_store
+  attr_accessor :stored_bikes
+  attr_accessor :fixed_bikes
   def initialize
-    @bike_store = []
+    @stored_bikes = []
+    @fixed_bikes = []
   end
-  #def store_bikes
 
-#  end
+  def pickup_bikes
+    bikes_transit = @fixed_bikes
+    @fixed_bikes = []
+    bikes_transit
+  end
 end

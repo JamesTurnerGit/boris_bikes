@@ -6,12 +6,12 @@ class Van
       @bikes_transit = []
     end
 
-    def get_broken_bikes dockingStation
-      @bikes_transit = dockingStation.pickup_bikes
+    def get_bikes station
+      @bikes_transit = station.pickup_bikes
     end
 
     def drop_bikes garage
-      garage.bike_store = @bikes_transit
+      garage.stored_bikes = @bikes_transit
       @bikes_transit = []
     end
 end
