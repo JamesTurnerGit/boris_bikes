@@ -9,23 +9,19 @@ class DockingStation
   def initialize(capacity=DEFAULT_CAPACITY)
     @capacity = capacity
     @bikes = []
-
   end
 
   def release_bike
     empty?
-
     @bikes.pop
   end
 
   def dock(bike)
     full?
-
     @bikes << bike
   end
 
   private
-
   def full?
     fail "Dock full" if @bikes.count >= @capacity
   end
