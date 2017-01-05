@@ -10,18 +10,19 @@ describe  DockingStation do
   #  before(:each) do
     #  subject.dock(double(:bike))
   #  end
-
+  let(:bike) { double :bike}
     it 'releases a bike' do
       subject.dock(bike)
-      expect(subject.release_bike.Class).to eq bike
+      allow(bike).to receive(:Class).and_return(Bike)
+      expect(subject.release_bike.Class).to eq Bike
     end
-    let(:bike) { double :bike}
+
     it 'releases a working bike' do
-      allow(bike).to receive(:working).and_return(true)
-      expect(bike).to be_working
-      #subject.dock(bike)
-      #released_bike = subject.release_bike
-      #expect(released_bike).to be_working?
+      #allow(bike).to receive(:working?).and_return(true)
+      bike = double(bike, :working? => true)
+      subject.dock(bike)
+      released_bike = subject.release_bike
+      expect(released_bike).to be_working
     end
   end
 
