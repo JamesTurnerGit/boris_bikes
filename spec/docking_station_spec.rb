@@ -20,6 +20,7 @@ describe  DockingStation do
   end
 
   describe '#dock' do
+
     describe 'raises an error if there\'s more than twenty bikes present'do
       it 'raises an error if there is too many bikes'do
         subject.capacity.times{subject.dock Bike.new}
