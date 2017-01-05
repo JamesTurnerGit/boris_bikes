@@ -24,8 +24,21 @@ describe  DockingStation do
     end
   end
 
+  describe 'report_broken' do
+    it 'checks size of Broken Bikes' do
+      expect(subject.broken_bikes.size).to eq 0
+    end
+    it 'adds bike to Broken Bikes' do
+      subject.dock(Bike.new)
+      subject.report_broken
+      expect(subject.broken_bikes.size).to eq 1
+    end
+    it {is_expected.to respond_to :report_broken}
+  end
+
+
   it { is_expected.to respond_to(:dock).with(1).argument}
 
-  it { is_expected.to respond_to(:bike) }
+  it { is_expected.to respond_to(:bikes) }
 
 end
