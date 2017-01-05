@@ -28,11 +28,15 @@ class DockingStation
   end
 
   private
+  def total_bikes
+    bikes.count + broken_bikes.count
+  end
+
   def full?
-    fail "Dock full" if @bikes.count + @broken_bikes.count >= @capacity
+    fail "Dock full" if  total_bikes>= capacity
   end
 
   def empty?
-    fail "No bikes present" if @bikes.empty?
+    fail "No bikes present" if bikes.empty?
   end
 end
