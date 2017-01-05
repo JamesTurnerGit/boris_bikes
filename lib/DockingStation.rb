@@ -33,7 +33,7 @@ class DockingStation
   end
 
   def full?
-    fail "Dock full" if  total_bikes>= capacity
+    fail "Dock full" if  total_bikes >= capacity
   end
 
   def empty?

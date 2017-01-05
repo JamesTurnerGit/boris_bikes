@@ -7,14 +7,21 @@ describe  DockingStation do
   it { is_expected.to respond_to :report_broken}
 
   describe '#release_bike' do
-    before(:each) do
-      subject.dock(double(:bike))
-    end
+  #  before(:each) do
+    #  subject.dock(double(:bike))
+  #  end
+
     it 'releases a bike' do
+      subject.dock(bike)
       expect(subject.release_bike.Class).to eq bike
     end
+    let(:bike) { double :bike}
     it 'releases a working bike' do
-      expect(subject.release_bike).to be_working
+      allow(bike).to receive(:working).and_return(true)
+      expect(bike).to be_working
+      #subject.dock(bike)
+      #released_bike = subject.release_bike
+      #expect(released_bike).to be_working?
     end
   end
 
