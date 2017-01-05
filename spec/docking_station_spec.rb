@@ -8,14 +8,10 @@ describe  DockingStation do
   it { is_expected.to respond_to :report_broken}
 
   describe '#release_bike' do
-  #  before(:each) do
-    #  subject.dock(double(:bike))
-  #  end
     it 'releases a bike' do
       subject.dock(bike)
       expect(subject.release_bike.Class).to eq Bike
     end
-
     it 'releases a working bike' do
       subject.dock(bike)
       released_bike = subject.release_bike
@@ -54,7 +50,7 @@ describe  DockingStation do
     end
   end
 
-  describe 'pickup_bikes' do
+  describe '#pickup_bikes' do
     it { is_expected.to respond_to :pickup_bikes}
     it 'Removes bikes stored in broken_bikes' do
       subject.dock(bike)
@@ -63,5 +59,4 @@ describe  DockingStation do
       expect(subject.broken_bikes.size).to eq 0
     end
   end
-
 end
